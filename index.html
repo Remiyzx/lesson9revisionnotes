@@ -10,17 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #F8FAFC;         
-            --primary-color: #1E3A8A;    
-            --primary-hover: #1D4ED8;    
-            --accent-color: #D97706;     
-            --card-bg: #FFFFFF;          
-            --border-color: #E2E8F0;     
-            --text-main: #1E293B;        
-            --text-sub: #64748B;         
+            --bg-color: #FFF5F7;         /* Gentle blush pink background */
+            --primary-color: #BE185D;    /* Deep rose pink for header & primary elements */
+            --primary-hover: #9D174D;    /* Darker rose pink for hover */
+            --accent-color: #EC4899;     /* Bright festive pink for accents */
+            --card-bg: #FFFFFF;          /* Crisp white cards */
+            --border-color: #FBCFE8;     /* Soft pastel pink border */
+            --text-main: #1E293B;        /* Dark slate for high contrast readability */
+            --text-sub: #64748B;         /* Subdued slate text */
             --answer-blue: #2563EB;      
             --correct-green: #15803D;    
             --error-red: #B91C1C;        
+            --light-pink: #FDF2F8;       /* Table header & highlight fill */
 
             /* STANDARD PINYIN FONT STACK */
             --pinyin-font: 'Andika', 'Century Gothic', 'Comic Sans MS', sans-serif;
@@ -39,43 +40,43 @@
 
         /* SIDEBAR NAVIGATION */
         .sidebar {
-            width: 300px;
+            width: 320px;
             background-color: var(--primary-color);
             color: white;
             position: fixed;
             top: 0; bottom: 0; left: 0;
             display: flex; flex-direction: column;
-            box-shadow: 4px 0 10px rgba(0,0,0,0.08);
+            box-shadow: 4px 0 12px rgba(190, 24, 93, 0.2);
             z-index: 100;
         }
 
         .sidebar-header {
             padding: 2rem 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .sidebar-header h1 { font-size: 1.35rem; margin-bottom: 6px; color: #FFFFFF; }
-        .sidebar-header p { font-size: 0.85rem; color: #93C5FD; }
+        .sidebar-header h1 { font-size: 1.35rem; margin-bottom: 6px; color: #FFFFFF; font-family: var(--pinyin-font); }
+        .sidebar-header p { font-size: 0.88rem; color: #FCE7F3; font-weight: bold; }
 
         .sidebar-menu { list-style: none; padding: 1rem 0; overflow-y: auto; flex-grow: 1; }
 
         .sidebar-menu button {
             width: 100%; text-align: left; background: none; border: none;
-            color: #E2E8F0; padding: 1rem 1.5rem; font-size: 0.92rem; font-weight: 500;
+            color: #FCE7F3; padding: 1rem 1.5rem; font-size: 0.95rem; font-weight: 500;
             cursor: pointer; display: flex; align-items: center; gap: 8px;
-            transition: all 0.2s ease; border-left: 4px solid transparent;
+            transition: all 0.2s ease; border-left: 5px solid transparent;
         }
 
-        .sidebar-menu button:hover { background-color: rgba(255,255,255,0.08); color: white; }
+        .sidebar-menu button:hover { background-color: rgba(255,255,255,0.12); color: white; }
         .sidebar-menu button.active {
-            background-color: rgba(255,255,255,0.18); color: white;
-            border-left-color: var(--accent-color); font-weight: bold;
+            background-color: rgba(255,255,255,0.22); color: white;
+            border-left-color: #FBCFE8; font-weight: bold;
         }
 
         /* MAIN CONTENT AREA */
         .main-content {
-            margin-left: 300px; flex-grow: 1;
-            padding: 2.5rem 3.5rem; max-width: 1150px;
+            margin-left: 320px; flex-grow: 1;
+            padding: 2.5rem 3.5rem; max-width: 1250px;
         }
 
         .tab-content { display: none; animation: fadeIn 0.3s ease-in-out; }
@@ -86,45 +87,54 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .content-header { margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--border-color); }
-        .content-header h2 { color: var(--primary-color); font-size: 1.8rem; }
+        .content-header { margin-bottom: 2rem; padding-bottom: 0.8rem; border-bottom: 3px solid var(--border-color); }
+        .content-header h2 { color: var(--primary-color); font-size: 2rem; }
 
         /* CARDS */
         .card {
             background-color: var(--card-bg); border: 1px solid var(--border-color);
-            border-radius: 10px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
-            margin-bottom: 1.8rem; padding: 1.8rem;
+            border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.08);
+            margin-bottom: 1.8rem; padding: 2rem;
         }
 
         .card-title {
-            font-size: 1.25rem; font-weight: bold; color: var(--primary-color);
-            margin-bottom: 1rem; padding-bottom: 0.4rem; border-bottom: 1px dashed var(--border-color);
+            font-size: 1.35rem; font-weight: bold; color: var(--primary-color);
+            margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px dashed var(--border-color);
             display: flex; align-items: center; justify-content: space-between;
         }
 
         .page-badge {
-            background-color: #FEF3C7; color: #92400E; font-size: 0.85rem;
-            padding: 3px 10px; border-radius: 12px; font-weight: bold;
+            background-color: #FCE7F3; color: #9D174D; font-size: 0.85rem;
+            padding: 3px 12px; border-radius: 12px; font-weight: bold;
         }
 
-        .translation { display: inline; font-size: 0.92rem; color: var(--text-sub); font-weight: normal; margin-left: 6px; font-family: 'Helvetica Neue', Arial, sans-serif; }
+        .translation { display: inline; font-size: 0.95rem; color: var(--text-sub); font-weight: normal; margin-left: 6px; font-family: 'Helvetica Neue', Arial, sans-serif; }
 
-        /* PINYIN FONT ENFORCEMENT */
-        .py-text, .vocab-pinyin, .vocab-collo, .vocab-sent, .dlg-turn, .dlg-turn-ans, .qa-q, .qa-a, .quiz-ans, .correct-example, .error-example, .zodiac-name, .wb-q, .ans-content, .wb-py-q, .ans-py {
+        /* PINYIN FONT ENFORCEMENT & PREVENT SQUISHING */
+        .py-text, .vocab-collo, .vocab-sent, .dlg-turn, .dlg-turn-ans, .qa-q, .qa-a, .quiz-ans, .correct-example, .error-example, .zodiac-name, .wb-q, .ans-content, .wb-py-q, .ans-py {
             font-family: var(--pinyin-font) !important;
+        }
+
+        .pinyin-box {
+            font-family: var(--pinyin-font) !important;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            background: #FFFFFF;
+            padding: 14px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            line-height: 2.2;
+            width: 100%;
         }
 
         .wb-py-q { color: #0369A1; font-weight: 500; margin-top: 2px; }
         .ans-py { font-weight: bold; color: #1E40AF; }
 
         /* HIGHLIGHTING & UNDERLINE STYLES */
-        .collo-target { font-weight: bold; color: #EA580C; }
-        .qw { font-weight: bold; color: #9333EA; background-color: #F3E8FF; padding: 0 4px; border-radius: 4px; }
+        .collo-target { font-weight: bold; color: var(--primary-color); }
+        .grammar-hl { color: var(--primary-color); font-weight: bold; background-color: #FCE7F3; padding: 2px 6px; border-radius: 4px; }
         .ud-slot { text-decoration: underline; text-decoration-color: var(--accent-color); text-decoration-thickness: 2px; font-weight: bold; color: var(--primary-color); }
         .ud-ans { text-decoration: underline; text-decoration-color: var(--answer-blue); text-decoration-thickness: 2px; font-weight: bold; color: var(--answer-blue); }
-
-        /* NO WRAP CLASS */
-        .nowrap-line { white-space: nowrap !important; }
 
         /* VOCAB TILE GRID */
         .vocab-grid {
@@ -145,25 +155,25 @@
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
-            min-height: 135px;
+            min-height: 140px;
             transition: all 0.2s ease;
         }
 
         .vocab-tile:hover {
-            border-color: #93C5FD;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 10px rgba(236,72,153,0.12);
         }
 
-        .tile-header { font-size: 0.85rem; font-weight: bold; color: var(--accent-color); margin-bottom: 4px; }
+        .tile-header { font-size: 0.85rem; font-weight: bold; color: var(--primary-color); margin-bottom: 4px; }
         .tile-meaning { font-size: 1.05rem; font-weight: 600; color: var(--text-main); margin-bottom: 10px; }
 
         .tile-quiz-btn {
-            width: 100%; background-color: #F1F5F9; border: 2px dashed #CBD5E1;
-            border-radius: 8px; padding: 8px 6px; cursor: pointer; transition: all 0.2s; user-select: none;
+            width: 100%; background-color: var(--light-pink); border: 2px dashed var(--border-color);
+            border-radius: 8px; padding: 10px 6px; cursor: pointer; transition: all 0.2s; user-select: none;
         }
-        .tile-quiz-btn:hover { background-color: #E2E8F0; border-color: var(--primary-color); }
-        .tile-quiz-btn .quiz-hint { font-size: 0.85rem; color: #64748B; font-weight: 500; }
-        .tile-quiz-btn .quiz-ans { display: none; font-weight: bold; color: var(--primary-color); font-size: 1.15rem; }
+        .tile-quiz-btn:hover { background-color: #FCE7F3; border-color: var(--primary-color); }
+        .tile-quiz-btn .quiz-hint { font-size: 0.88rem; color: #9D174D; font-weight: bold; }
+        .tile-quiz-btn .quiz-ans { display: none; font-weight: bold; color: var(--primary-color); font-size: 1.2rem; font-family: var(--pinyin-font); }
         .tile-quiz-btn.revealed { background-color: #EFF6FF; border: 2px solid var(--answer-blue); cursor: default; }
         .tile-quiz-btn.revealed .quiz-hint { display: none; }
         .tile-quiz-btn.revealed .quiz-ans { display: block; }
@@ -190,8 +200,8 @@
             font-weight: 500;
         }
         .wb-ans-box {
-            background-color: #F1F5F9;
-            border: 1.5px dashed #CBD5E1;
+            background-color: var(--light-pink);
+            border: 1.5px dashed var(--border-color);
             border-radius: 6px;
             padding: 10px 14px;
             cursor: pointer;
@@ -199,13 +209,13 @@
             transition: all 0.2s ease;
         }
         .wb-ans-box:hover {
-            background-color: #E2E8F0;
+            background-color: #FCE7F3;
             border-color: var(--primary-color);
         }
         .wb-ans-box .ans-hint {
-            color: var(--text-sub);
+            color: #9D174D;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: bold;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -215,6 +225,7 @@
             font-size: 1.05rem;
             color: #1E40AF;
             line-height: 1.6;
+            font-family: var(--pinyin-font);
         }
         .wb-ans-box.revealed {
             background-color: #EFF6FF;
@@ -227,37 +238,33 @@
         /* TABLES */
         .vocab-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
         .vocab-table th, .vocab-table td { text-align: left; padding: 0.8rem 0.6rem; border-bottom: 1px solid var(--border-color); vertical-align: top; }
-        .vocab-table th { background-color: #F8FAFC; color: var(--primary-color); font-size: 0.85rem; text-transform: uppercase; }
+        .vocab-table th { background-color: var(--light-pink); color: var(--primary-color); font-size: 0.85rem; text-transform: uppercase; }
 
         /* RULES & DIALOGUES */
-        .rule-box { background-color: #FAFAFA; border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem; margin-top: 0.8rem; }
+        .rule-box { background-color: var(--light-pink); border: 1.5px solid var(--border-color); border-radius: 10px; padding: 1.4rem; margin-top: 0.8rem; }
         .correct-example { color: var(--correct-green); font-weight: bold; }
         .error-example { color: var(--error-red); font-weight: bold; text-decoration: line-through; }
 
         .dialogue-box { background-color: #FFFFFF; border-left: 4px solid var(--accent-color); padding: 0.8rem 1rem; margin-bottom: 0.8rem; border-radius: 0 6px 6px 0; }
-        .speaker { font-weight: bold; color: var(--primary-color); }
 
         /* LINE-BY-LINE A/B DIALOGUE TURNS */
-        .dlg-prompt-title { font-size: 1rem; font-weight: bold; color: var(--accent-color); margin: 1.4rem 0 0.5rem 0; border-left: 3px solid var(--accent-color); padding-left: 8px; }
-        .dlg-turn { padding: 0.6rem 0.9rem; margin-bottom: 0.4rem; background-color: #F8FAFC; border-left: 4px solid var(--primary-color); border-radius: 0 6px 6px 0; font-size: 1.02rem; }
-        .dlg-turn-ans { padding: 0.6rem 0.9rem; margin-bottom: 0.4rem; background-color: #EFF6FF; border-left: 4px solid var(--answer-blue); border-radius: 0 6px 6px 0; font-size: 1.02rem; color: #1E40AF; }
+        .dlg-prompt-title { font-size: 1rem; font-weight: bold; color: var(--primary-color); margin: 1.4rem 0 0.5rem 0; border-left: 4px solid var(--accent-color); padding-left: 8px; }
+        .dlg-turn { padding: 0.6rem 0.9rem; margin-bottom: 0.4rem; background-color: #FFF5F7; border-left: 4px solid var(--primary-color); border-radius: 0 6px 6px 0; font-size: 1.05rem; }
+        .dlg-turn-ans { padding: 0.6rem 0.9rem; margin-bottom: 0.4rem; background-color: #EFF6FF; border-left: 4px solid var(--answer-blue); border-radius: 0 6px 6px 0; font-size: 1.05rem; color: #1E40AF; }
 
-        .qa-card { background-color: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 8px; padding: 1.2rem; margin-top: 1rem; }
-        .qa-pair { margin-bottom: 0.8rem; padding-bottom: 0.6rem; border-bottom: 1px dashed #CBD5E1; }
-        .qa-pair:last-child { border-bottom: none; margin-bottom: 0; }
-        .qa-q { font-weight: bold; color: #0369A1; }
-        .qa-a { color: var(--text-main); margin-top: 2px; }
+        .qa-q { font-weight: bold; color: var(--primary-color); font-size: 1.15rem; }
+        .qa-a { font-weight: 500; color: var(--correct-green); font-size: 1.15rem; margin-top: 2px; }
 
         /* ZODIAC GRID */
         .zodiac-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 1rem; }
-        .zodiac-item { background: #F8FAFC; border: 1px solid var(--border-color); border-radius: 8px; text-align: center; padding: 0.8rem 0.5rem; }
+        .zodiac-item { background: #FFFFFF; border: 1.5px solid var(--border-color); border-radius: 8px; text-align: center; padding: 0.8rem 0.5rem; }
         .zodiac-icon { font-size: 1.8rem; margin-bottom: 4px; }
-        .zodiac-name { font-weight: bold; color: var(--primary-color); font-size: 0.95rem; }
+        .zodiac-name { font-weight: bold; color: var(--primary-color); font-size: 1rem; }
         .zodiac-years { font-size: 0.8rem; color: var(--text-sub); margin-top: 4px; }
 
         /* PADLET VIDEO BUTTON */
-        .padlet-btn { display: inline-block; background-color: #EC4899; color: white; padding: 0.7rem 1.3rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; margin-top: 0.8rem; transition: background-color 0.2s; box-shadow: 0 4px 6px -1px rgba(236, 72, 153, 0.2); }
-        .padlet-btn:hover { background-color: #DB2777; color: white; }
+        .padlet-btn { display: inline-block; background-color: var(--primary-color); color: white !important; padding: 0.7rem 1.3rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.95rem; margin-top: 0.8rem; transition: background-color 0.2s; box-shadow: 0 4px 6px -1px rgba(190, 24, 93, 0.2); }
+        .padlet-btn:hover { background-color: var(--primary-hover); color: white; }
 
         .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 1rem; font-size: 1.05rem; }
         .checklist-item input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; cursor: pointer; }
@@ -268,7 +275,7 @@
             .main-content { margin-left: 0; padding: 1.5rem; width: 100%; }
             .sidebar-menu { display: flex; overflow-x: auto; padding: 0.5rem; }
             .sidebar-menu button { white-space: nowrap; padding: 0.8rem 1rem; border-left: none; border-bottom: 3px solid transparent; }
-            .sidebar-menu button.active { border-left-color: transparent; border-bottom-color: var(--accent-color); }
+            .sidebar-menu button.active { border-left-color: transparent; border-bottom-color: #FBCFE8; }
             .zodiac-grid { grid-template-columns: repeat(2, 1fr); }
             .vocab-grid { grid-template-columns: repeat(2, 1fr); }
         }
@@ -279,17 +286,17 @@
     <!-- LEFT SIDEBAR MENU -->
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h1>Lesson 9 Full Notes</h1>
+            <h1>Lesson 9 Revision Notes</h1>
             <p>Tā jīnnián èrshí suì</p>
         </div>
         <ul class="sidebar-menu">
             <li><button class="tab-btn active" onclick="openTab(event, 'tab-cheat')">📌 Key Sentences & Overview</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'tab-vocab')">🔤 Vocab Quiz Flashcards</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'tab-grammar')">📖 Grammar Rules & Pitfalls</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'tab-vocab')">🃏 Vocab Quiz Flashcards</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'tab-grammar')">💡 Grammar Rules & Pitfalls</button></li>
             <li><button class="tab-btn" onclick="openTab(event, 'tab-dialogues')">💬 Core Dialogue Breakdown</button></li>
             <li><button class="tab-btn" onclick="openTab(event, 'tab-workbook')">📘 Workbook Exercises</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'tab-exercises')">✏️ Textbook Exercises (Pg 137-141)</button></li>
-            <li><button class="tab-btn" onclick="openTab(event, 'tab-quiz')">✅ Assignments & Self-Check List</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'tab-exercises')">📖 Textbook Exercises</button></li>
+            <li><button class="tab-btn" onclick="openTab(event, 'tab-quiz')">📝 Assignments & Self-Check List</button></li>
         </ul>
     </nav>
 
@@ -299,7 +306,7 @@
         <!-- TAB 1: KEY SENTENCES & OVERVIEW -->
         <section id="tab-cheat" class="tab-content active">
             <div class="content-header">
-                <h2>Lesson 9 Key Sentences & Grammar Overview</h2>
+                <h2>Lesson 9 Key Sentences & Overview</h2>
             </div>
 
             <div class="card">
@@ -312,11 +319,11 @@
                     <span class="translation">(Do you have class tomorrow morning?)</span>
                 </div>
                 <div class="dlg-turn">
-                    <strong>2. Xīngqīrì shì <span class="qw">jǐ hào</span>?</strong>
+                    <strong>2. Xīngqīrì shì <span class="grammar-hl">jǐ hào</span>?</strong>
                     <span class="translation">(What date is Sunday?)</span>
                 </div>
                 <div class="dlg-turn">
-                    <strong>3. Tā jīnnián <span class="qw">duō dà</span>?</strong>
+                    <strong>3. Tā jīnnián <span class="grammar-hl">duō dà</span>?</strong>
                     <span class="translation">(How old is he this year?)</span>
                 </div>
                 <div class="dlg-turn">
@@ -337,28 +344,26 @@
                 </div>
                 <div class="dlg-turn">
                     <strong>8. Wǒ hěn xǐhuan chī kǎoyā.</strong>
-                    <span class="translation">(I really like eating roast duck.)</span>
+                    <span class="translation">(I love to eat roast duck.)</span>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-title">🎯 Question Words (疑问代词) Quick Reference</div>
-                <div class="qa-card">
-                    <div class="qa-pair">
-                        <div class="qa-q"><span class="qw">nǎ nián</span> / <span class="qw">jǐ yuè jǐ hào</span> / <span class="qw">nǎ tiān</span></div>
-                        <div class="qa-a">Used for Year, Date, and Specific Day. <span class="translation">(e.g., Tā nǎ nián chūshēng? / Jīntiān shì jǐ yuè jǐ hào?)</span></div>
+                <div class="card-title">❓ Question Words Quick Reference</div>
+                <div class="pinyin-box">
+                    <div style="margin-bottom: 10px;">
+                        • <span class="grammar-hl">nǎ nián</span> / <span class="grammar-hl">jǐ yuè jǐ hào</span> / <span class="grammar-hl">nǎ tiān</span> ➔ Used for Year, Date, and Specific Day.
+                        <br><span class="translation">(e.g., Tā nǎ nián chūshēng? / Jīntiān shì jǐ yuè jǐ hào?)</span>
                     </div>
-                    <div class="qa-pair">
-                        <div class="qa-q"><span class="qw">xīngqī jǐ</span> / <span class="qw">shénme shíhou</span> / <span class="qw">jǐ diǎn</span></div>
-                        <div class="qa-a">Used for Weekday, Time in general, and Clock Time. <span class="translation">(e.g., Míngtiān shì xīngqī jǐ? / Nǐ jǐ diǎn yǒu kè?)</span></div>
+                    <div style="margin-bottom: 10px;">
+                        • <span class="grammar-hl">xīngqī jǐ</span> / <span class="grammar-hl">shénme shíhou</span> / <span class="grammar-hl">jǐ diǎn</span> ➔ Used for Weekday, General Time, and Exact Clock Time.
+                        <br><span class="translation">(e.g., Míngtiān shì xīngqī jǐ? / Nǐ jǐ diǎn yǒu kè?)</span>
                     </div>
-                    <div class="qa-pair">
-                        <div class="qa-q"><span class="qw">duō dà</span> vs <span class="qw">jǐ suì</span></div>
-                        <div class="qa-a">"Duō dà" for adults/general age; "Jǐ suì" specifically for children under 10.</div>
+                    <div style="margin-bottom: 10px;">
+                        • <span class="grammar-hl">duō dà</span> vs <span class="grammar-hl">jǐ suì</span> ➔ "duō dà" for adults/general age; "jǐ suì" specifically for children under 10.
                     </div>
-                    <div class="qa-pair">
-                        <div class="qa-q"><span class="qw">nǎr</span> vs <span class="qw">shǔ shénme</span></div>
-                        <div class="qa-a">"Nǎr rén" asks for hometown/city; "Shǔ shénme" asks for Chinese Zodiac animal.</div>
+                    <div>
+                        • <span class="grammar-hl">nǎr rén</span> vs <span class="grammar-hl">shǔ shénme</span> ➔ "nǎr rén" asks for hometown/city; "shǔ shénme" asks for Chinese Zodiac animal.
                     </div>
                 </div>
             </div>
@@ -379,47 +384,47 @@
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #1</div>
                         <div class="tile-meaning">year / this year</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">nián / jīnnián</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">nián / jīnnián</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #3</div>
                         <div class="tile-meaning">how is...</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">zěnmeyàng</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">zěnmeyàng</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #4</div>
                         <div class="tile-meaning">today</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">jīntiān</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">jīntiān</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #5</div>
                         <div class="tile-meaning">class, lesson</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">kè</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">kè</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #6</div>
                         <div class="tile-meaning">week; day of the week</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">xīngqī</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">xīngqī</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #7</div>
                         <div class="tile-meaning">morning</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">shàngwǔ</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">shàngwǔ</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #8</div>
                         <div class="tile-meaning">afternoon</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">xiàwǔ</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">xiàwǔ</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #9</div>
                         <div class="tile-meaning">Sunday</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">xīngqīrì / xīngqītiān</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">xīngqīrì / xīngqītiān</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #10</div>
                         <div class="tile-meaning">day of month</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">hào (rì)</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">hào (rì)</span></div>
                     </div>
                 </div>
 
@@ -431,77 +436,77 @@
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #2</div>
                         <div class="tile-meaning">year of age</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">suì</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">suì</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #11</div>
                         <div class="tile-meaning">birthday</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">shēngri</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">shēngri</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #12</div>
                         <div class="tile-meaning">how old</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">duō dà</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">duō dà</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #13</div>
                         <div class="tile-meaning">to be born</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">chūshēng</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">chūshēng</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #14</div>
                         <div class="tile-meaning">born in year of</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">shǔ</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">shǔ</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #15</div>
                         <div class="tile-meaning">party</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">jùhuì</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">jùhuì</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #16</div>
                         <div class="tile-meaning">congratulate</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">zhùhè</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">zhùhè</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #17</div>
-                        <div class="tile-meaning">participate, join (optional)</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">cānjiā</span></div>
+                        <div class="tile-meaning">participate, attend</div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">cānjiā</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #19</div>
                         <div class="tile-meaning">celebrate</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">guò</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">guò</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #20</div>
                         <div class="tile-meaning">eat</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">chī</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">chī</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #21</div>
                         <div class="tile-meaning">cake</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">dàngāo</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">dàngāo</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #22</div>
                         <div class="tile-meaning">buy</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">mǎi</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">mǎi</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #23</div>
                         <div class="tile-meaning">bottle (MW)</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">píng</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">píng</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #24</div>
                         <div class="tile-meaning">red wine</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">hóng pútaojiǔ</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">hóng pútaojiǔ</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #26</div>
                         <div class="tile-meaning">Beijing</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">Běijīng</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">Běijīng</span></div>
                     </div>
                 </div>
 
@@ -513,32 +518,32 @@
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #1</div>
                         <div class="tile-meaning">happy</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">kuàilè</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">kuàilè</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #2</div>
                         <div class="tile-meaning">beautiful, nice</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">piàoliang</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">piàoliang</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #3</div>
                         <div class="tile-meaning">roast duck</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">kǎoyā</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">kǎoyā</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #4</div>
                         <div class="tile-meaning">drink</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">hē</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">hē</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #5</div>
                         <div class="tile-meaning">again</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">zài</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">zài</span></div>
                     </div>
                     <div class="vocab-tile">
                         <div class="tile-header">WORD #6</div>
                         <div class="tile-meaning">longevity noodles</div>
-                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">👁️ Reveal Pinyin</span><span class="quiz-ans">shòumiàn</span></div>
+                        <div class="tile-quiz-btn" onclick="this.classList.add('revealed')"><span class="quiz-hint">🔍 Reveal Pinyin</span><span class="quiz-ans">shòumiàn</span></div>
                     </div>
                 </div>
             </div>
@@ -555,7 +560,7 @@
                     <span>1. Expressing Dates: BIG to SMALL Order</span>
                     <span class="page-badge">Pg 141</span>
                 </div>
-                <p>Always arrange time units from largest to smallest: <strong>Year -> Month -> Day -> Day of Week -> Time of Day -> Hour/Minute</strong>.</p>
+                <p>Always arrange time units from largest to smallest: <strong>Year ➔ Month ➔ Day ➔ Day of Week ➔ Time of Day ➔ Hour/Minute</strong>.</p>
                 <div class="rule-box">
                     <div class="correct-example">✔ 2026 nián, shíyuè, èrshíqī hào, xīngqīsì, shàngwǔ 9 diǎn</div>
                     <div class="error-example">✘ 9 AM, Thursday, October 27th, 2026 (Never use English word order!)</div>
@@ -569,9 +574,9 @@
                     <thead>
                         <tr>
                             <th>Time Unit</th>
-                            <th>Previous (shàng / 过去)</th>
-                            <th>Current (zhè / jīn / 现在)</th>
-                            <th>Next (xià / míng / 未来)</th>
+                            <th>Previous (shàng)</th>
+                            <th>Current (zhè / jīn)</th>
+                            <th>Next (xià / míng)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -587,13 +592,13 @@
                             <td class="py-text">zhè xīngqī <span class="translation">(this week)</span></td>
                             <td class="py-text">xià xīngqī <span class="translation">(next week)</span></td>
                         </tr>
-                        <tr style="background-color: #FEF2F2;">
+                        <tr style="background-color: #FEE2E2;">
                             <td><strong>Year (nián) ⚠️ No shàng/xià!</strong></td>
                             <td class="py-text">qùnián <span class="translation">(last year)</span></td>
                             <td class="py-text">jīnnián <span class="translation">(this year)</span></td>
                             <td class="py-text">míngnián <span class="translation">(next year)</span></td>
                         </tr>
-                        <tr style="background-color: #FEF2F2;">
+                        <tr style="background-color: #FEE2E2;">
                             <td><strong>Day (tiān) ⚠️ No shàng/xià!</strong></td>
                             <td class="py-text">zuótiān <span class="translation">(yesterday)</span></td>
                             <td class="py-text">jīntiān / xiànzài <span class="translation">(today / now)</span></td>
@@ -601,59 +606,57 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="vocab-note" style="margin-top: 8px;">
-                    ⚠️ CRUCIAL PITFALL: Never say "shàng nián" or "xià tiān"!
+                <div class="rule-box" style="margin-top: 8px; background-color: #FEF3C7; border-color: #FCD34D;">
+                    <strong style="color: #92400E;">⚠️ CRUCIAL PITFALL:</strong> <span style="color: #78350F;">Never say "shàng nián" or "xià tiān"! Always use <strong>qùnián</strong> and <strong>míngtiān</strong>.</span>
                 </div>
 
                 <div class="card-title" style="margin-top: 2rem;">
-                    <span>3. Age Expression: Nominal Predicate (名词谓语句)</span>
+                    <span>3. Age Expression: Nominal Predicate</span>
                     <span class="page-badge">Pg 143</span>
                 </div>
-                <p>When stating age, the noun phrase functions directly as the predicate. <strong>DO NOT insert "shì"</strong>!</p>
+                <p>When stating age, the numeral-measure phrase functions directly as the predicate. <strong>DO NOT insert "shì"</strong>!</p>
                 <div class="rule-box">
                     <div class="correct-example">✔ Tā jīnnián èrshí suì.</div>
                     <div class="error-example">✘ Tā jīnnián shì èrshí suì. (Incorrect!)</div>
                 </div>
 
-                <div class="card-title" style="margin-top: 2rem;">4. 12 Chinese Zodiac Animals (生肖) & Birth Years</div>
+                <div class="card-title" style="margin-top: 2rem;">4. 12 Chinese Zodiac Animals & Birth Years</div>
                 <div class="zodiac-grid">
                     <div class="zodiac-item"><div class="zodiac-icon">🐭</div><div class="zodiac-name">shǔ shǔ</div><div class="zodiac-years">'84, '96, '08, '20</div></div>
-                    <div class="zodiac-item"><div class="zodiac-icon">🐮</div><div class="zodiac-name">shǔ niú</div><div class="zodiac-years">'85, '97, '09, '21</div></div>
+                    <div class="zodiac-item"><div class="zodiac-icon">🐂</div><div class="zodiac-name">shǔ niú</div><div class="zodiac-years">'85, '97, '09, '21</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐯</div><div class="zodiac-name">shǔ hǔ</div><div class="zodiac-years">'86, '98, '10, '22</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐰</div><div class="zodiac-name">shǔ tù</div><div class="zodiac-years">'87, '99, '11, '23</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐲</div><div class="zodiac-name">shǔ lóng</div><div class="zodiac-years">'88, '00, '12, '24</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐍</div><div class="zodiac-name">shǔ shé</div><div class="zodiac-years">'89, '01, '13, '25</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐴</div><div class="zodiac-name">shǔ mǎ</div><div class="zodiac-years">'90, '02, '14, '26</div></div>
-                    <div class="zodiac-item"><div class="zodiac-icon">🐑</div><div class="zodiac-name">shǔ yáng</div><div class="zodiac-years">'91, '03, '15, '27</div></div>
+                    <div class="zodiac-item"><div class="zodiac-icon">🐐</div><div class="zodiac-name">shǔ yáng</div><div class="zodiac-years">'91, '03, '15, '27</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐵</div><div class="zodiac-name">shǔ hóu</div><div class="zodiac-years">'92, '04, '16, '28</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐔</div><div class="zodiac-name">shǔ jī</div><div class="zodiac-years">'93, '05, '17, '29</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐶</div><div class="zodiac-name">shǔ gǒu</div><div class="zodiac-years">'82, '94, '06, '18</div></div>
                     <div class="zodiac-item"><div class="zodiac-icon">🐷</div><div class="zodiac-name">shǔ zhū</div><div class="zodiac-years">'83, '95, '07, '19</div></div>
                 </div>
 
-                <div class="card-title" style="margin-top: 2rem;">5. Extended Usage: "#19 guò" & "... de shíhou"</div>
-                <div class="rule-box" style="overflow-x: auto;">
-                    <strong style="font-size:1.15rem;">1. "guò" (to celebrate):</strong> <span class="py-text">guò shēngri = celebrate a birthday.</span>
-                    <br><br><strong style="font-size:1.15rem;">2. "... de shíhou" (when... / during...):</strong>
-                    <div style="color:var(--primary-color); margin-top:10px; display:flex; flex-direction:column; gap:10px;">
-                        <div class="nowrap-line"><span class="py-text">• Zhōngguó rén <strong>guò shēngri de shíhou</strong> chī dàngāo ma?</span> <span class="translation">(Do Chinese people eat cake WHEN celebrating birthdays?)</span></div>
-                        <div class="nowrap-line"><span class="py-text">• Mèimei <strong>chànggē de shíhou</strong> hěn kě'ài.</span> <span class="translation">(WHEN younger sister sings, she is very cute.)</span></div>
-                        <div class="nowrap-line"><span class="py-text">• <strong>Chī hànbǎo de shíhou</strong> wǒ yào hē kělè.</span> <span class="translation">(WHEN eating a hamburger, I want to drink cola.)</span></div>
+                <div class="card-title" style="margin-top: 2rem;">5. Extended Usage: "guò" & "... de shíhou"</div>
+                <div class="rule-box">
+                    <strong style="font-size:1.15rem; color: var(--primary-color);">1. "guò" (to celebrate):</strong> <span class="py-text">guò shēngri = celebrate a birthday.</span>
+                    <br><br><strong style="font-size:1.15rem; color: var(--primary-color);">2. "... de shíhou" (when... / during...):</strong>
+                    <div class="pinyin-box">
+                        <div>• Zhōngguó rén <strong>guò shēngri de shíhou</strong> chī dàngāo ma? <span class="translation">(Do Chinese people eat cake WHEN celebrating birthdays?)</span></div>
+                        <div>• Mèimei <strong>chànggē de shíhou</strong> hěn kě'ài. <span class="translation">(WHEN younger sister sings, she is very cute.)</span></div>
+                        <div>• <strong>Chī hànbǎo de shíhou</strong> wǒ yào hē kělè. <span class="translation">(WHEN eating a hamburger, I want to drink cola.)</span></div>
                     </div>
                 </div>
 
                 <div class="card-title" style="margin-top: 2rem;">6. Distinguishing "zhùhè" vs "zhù"</div>
-                <div class="rule-box" style="overflow-x: auto;">
-                    <div style="margin-bottom: 12px;" class="nowrap-line">
-                        <strong style="font-size:1.15rem;">• zhùhè (congratulate on an event):</strong> Verb + Event 
-                        <span style="margin: 0 10px; color:var(--text-sub);">➔</span> 
-                        <span style="color:var(--primary-color);" class="py-text">e.g., Wǒmen <strong>zhùhè tā de shēngri</strong>.</span> 
+                <div class="rule-box">
+                    <div style="margin-bottom: 12px;">
+                        <strong style="font-size:1.15rem; color: var(--primary-color);">• zhùhè (congratulate on an event):</strong> Verb + Event 
+                        <br><span style="color:var(--primary-color);" class="py-text">e.g., Wǒmen <strong>zhùhè tā de shēngri</strong>.</span> 
                         <span class="translation">(We congratulate his birthday.)</span>
                     </div>
-                    <div class="nowrap-line">
-                        <strong style="font-size:1.15rem;">• zhù (wish someone something):</strong> Verb + Person + Wish 
-                        <span style="margin: 0 10px; color:var(--text-sub);">➔</span> 
-                        <span style="color:var(--primary-color);" class="py-text">e.g., <strong>Zhù nǐ</strong> shēngri kuàilè!</span> 
+                    <div>
+                        <strong style="font-size:1.15rem; color: var(--primary-color);">• zhù (wish someone something):</strong> Verb + Person + Wish 
+                        <br><span style="color:var(--primary-color);" class="py-text">e.g., <strong>Zhù nǐ</strong> shēngri kuàilè!</span> 
                         <span class="translation">(Wish you a happy birthday!)</span>
                     </div>
                 </div>
@@ -707,7 +710,7 @@
             </div>
         </section>
 
-        <!-- TAB 5: WORKBOOK EXERCISES (FULL CANVA SLIDES MATCH WITH DUAL TRANSLATIONS) -->
+        <!-- TAB 5: WORKBOOK EXERCISES -->
         <section id="tab-workbook" class="tab-content">
             <div class="content-header">
                 <h2>Workbook Exercises (Remi's Slides Pg 1-5)</h2>
@@ -722,54 +725,50 @@
                 <p style="margin-bottom:1.2rem; color:var(--text-sub);">Read Text 1 (pg 130-131). Click each box below to reveal the answer & dialogue line reference.</p>
 
                 <div class="wb-item">
-                    <div class="wb-q">1. Sòng Huá jīnnián duō dà? Shǔ shěnme? <span class="translation">(How old is Song Hua this year? What is his zodiac sign?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 11</div>
+                    <div class="wb-q">1. Sòng Huá jīnnián duō dà? Shǔ shénme? <span class="translation">(How old is Song Hua this year? What is his zodiac sign?)</span></div>
+                    <div class="wb-hint">📌 Hint: Reference Line 11</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">èrshí suì, shǔ gǒu</u> <span class="translation">(20 years old, born in the year of the dog)</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
                     <div class="wb-q">2. Zhōngguó rén guò shēngri de shíhou chī shénme? <span class="translation">(What do Chinese people eat when celebrating birthdays?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Lines 14, 15</div>
+                    <div class="wb-hint">📌 Hint: Reference Lines 14, 15</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">dàngāo</u> <span class="translation">(cake)</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
                     <div class="wb-q">3. Lín Nà hé Xiǎoyún mǎi shénme qù zhùhè Sòng Huá de shēngri? <span class="translation">(What do Lin Na and Xiaoyun buy to congratulate Song Hua's birthday?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Lines 16, 17</div>
+                    <div class="wb-hint">📌 Hint: Reference Lines 16, 17</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">yí ge dà dàngāo hé liǎng píng hóng pútaojiǔ</u> <span class="translation">(a big cake and two bottles of red wine)</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
-                    <div class="wb-q">4. 林娜什么时候有课?</div>
-                    <div class="wb-py-q">Pinyin: Lín Nà shénme shíhou yǒu kè? <span class="translation">(When does Lin Na have class?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 6</div>
+                    <div class="wb-q">4. Lín Nà shénme shíhou yǒu kè? <span class="translation">(When does Lin Na have class?)</span></div>
+                    <div class="wb-hint">📌 Hint: Reference Line 6</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content">
-                            <u class="ud-ans">星期四上午、下午</u>
-                            <div class="ans-py">Pinyin: xīngqīsì shàngwǔ, xiàwǔ <span class="translation">(Thursday morning and afternoon)</span></div>
+                            <div class="ans-py">xīngqīsì shàngwǔ, xiàwǔ <span class="translation">(Thursday morning and afternoon)</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="wb-item">
-                    <div class="wb-q">5. 宋华是哪儿人?</div>
-                    <div class="wb-py-q">Pinyin: Sòng Huá shì nǎr rén? <span class="translation">(Where is Song Hua from?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 13</div>
+                    <div class="wb-q">5. Sòng Huá shì nǎr rén? <span class="translation">(Where is Song Hua from?)</span></div>
+                    <div class="wb-hint">📌 Hint: Reference Line 13</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content">
-                            <u class="ud-ans">北京人</u>
-                            <div class="ans-py">Pinyin: Běijīng rén <span class="translation">(Beijing local / From Beijing)</span></div>
+                            <div class="ans-py">Běijīng rén <span class="translation">(Beijing local / From Beijing)</span></div>
                         </div>
                     </div>
                 </div>
@@ -785,53 +784,49 @@
 
                 <div class="wb-item">
                     <div class="wb-q">1. Jīntiān shì Sòng Huá de shēngri, Lín Nà shuō shénme? <span class="translation">(Today is Song Hua's birthday, what does Lin Na say?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 1</div>
+                    <div class="wb-hint">📌 Hint: Reference Line 1</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">"Zhù nǐ shēngri kuàilè!"</u> <span class="translation">("Wish you a happy birthday!")</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
                     <div class="wb-q">2. Shēngri dàngāo zěnmeyàng? <span class="translation">(How is the birthday cake?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 2</div>
+                    <div class="wb-hint">📌 Hint: Reference Line 2</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">Zhēn piàoliang</u> <span class="translation">(Really beautiful)</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
                     <div class="wb-q">3. Shéi de shēngri shì shíyīyuè shí'èr hào? <span class="translation">(Whose birthday is November 12th?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Lines 7, 8</div>
+                    <div class="wb-hint">📌 Hint: Reference Lines 7, 8</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content"><u class="ud-ans">Lín Nà</u> <span class="translation">(Lin Na)</span></div>
                     </div>
                 </div>
 
                 <div class="wb-item">
-                    <div class="wb-q">4. 马大为喜欢吃什么?</div>
-                    <div class="wb-py-q">Pinyin: Mǎ Dàwéi xǐhuan chī shénme? <span class="translation">(What does Ma Dawei like to eat?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 3</div>
+                    <div class="wb-q">4. Mǎ Dàwéi xǐhuan chī shénme? <span class="translation">(What does Ma Dawei like to eat?)</span></div>
+                    <div class="wb-hint">📌 Hint: Reference Line 3</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content">
-                            <u class="ud-ans">烤鸭 / 北京烤鸭</u>
-                            <div class="ans-py">Pinyin: kǎoyā / Běijīng kǎoyā <span class="translation">(roast duck / Beijing roast duck)</span></div>
+                            <div class="ans-py">kǎoyā / Běijīng kǎoyā <span class="translation">(roast duck / Beijing roast duck)</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="wb-item">
-                    <div class="wb-q">5. 他们哪天再去吃寿面?</div>
-                    <div class="wb-py-q">Pinyin: Tāmen nǎ tiān zài qù chī shòumiàn? <span class="translation">(Which day will they go eat longevity noodles again?)</span></div>
-                    <div class="wb-hint">💡 Hint: Reference Line 9</div>
+                    <div class="wb-q">5. Tāmen nǎ tiān zài qù chī shòumiàn? <span class="translation">(Which day will they go eat longevity noodles again?)</span></div>
+                    <div class="wb-hint">📌 Hint: Reference Line 9</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Answer</div>
                         <div class="ans-content">
-                            <u class="ud-ans">十一月十二号</u>
-                            <div class="ans-py">Pinyin: shíyīyuè shí'èr hào <span class="translation">(November 12th)</span></div>
+                            <div class="ans-py">shíyīyuè shí'èr hào <span class="translation">(November 12th)</span></div>
                         </div>
                     </div>
                 </div>
@@ -847,7 +842,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 1: (a) nine years old | (b) nine years | (c) April | (d) four months</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">jiǔ suì</u> <span class="translation">(nine years old)</span> | 
                             (b) <u class="ud-ans">jiǔ nián</u> <span class="translation">(nine years)</span> | 
@@ -860,7 +855,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 2: (a) Monday | (b) one day | (c) one week | (d) today afternoon</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">xīngqīyī</u> <span class="translation">(Monday)</span> | 
                             (b) <u class="ud-ans">yì tiān</u> <span class="translation">(one day)</span> | 
@@ -873,7 +868,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 3: (a) a roast duck | (b) three longevity noodles | (c) two cakes | (d) six bottles of red wine</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">yí ge kǎoyā</u> <span class="translation">(a roast duck)</span> | 
                             (b) <u class="ud-ans">sān ge shòumiàn</u> <span class="translation">(three longevity noodles)</span> | 
@@ -886,7 +881,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 4: (a) last week | (b) this week | (c) next week</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">shàng xīngqī</u> <span class="translation">(last week)</span> | 
                             (b) <u class="ud-ans">zhè xīngqī</u> <span class="translation">(this week)</span> | 
@@ -898,7 +893,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 5: (a) last month | (b) this month | (c) next month</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">shàng ge yuè</u> <span class="translation">(last month)</span> | 
                             (b) <u class="ud-ans">zhè ge yuè</u> <span class="translation">(this month)</span> | 
@@ -910,7 +905,7 @@
                 <div class="wb-item">
                     <div class="wb-q">Group 6: (a) Sunday night | (b) next month on the 3rd | (c) last Tuesday morning</div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) <u class="ud-ans">xīngqīrì wǎnshang / xīngqītiān wǎnshang</u> <span class="translation">(Sunday night)</span> | 
                             (b) <u class="ud-ans">xià yuè sān hào / xià ge yuè sān hào</u> <span class="translation">(next month on the 3rd)</span> | 
@@ -927,7 +922,7 @@
                         (a) 31 August 1957 | (b) 10 July 2002 | (c) 5 March 2026
                     </div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')" style="margin-top:8px;">
-                        <div class="ans-hint">👁️ Click to Reveal Pinyin Translation</div>
+                        <div class="ans-hint">🔍 Click to Reveal Pinyin Translation</div>
                         <div class="ans-content">
                             (a) 31 Aug 1957: <u class="ud-ans">yī jiǔ wǔ qī nián bāyuè sānshíyī hào / rì</u> <span class="translation">(August 31, 1957)</span><br>
                             (b) 10 Jul 2002: <u class="ud-ans">èr líng líng èr nián qīyuè shí hào / rì</u> <span class="translation">(July 10, 2002)</span><br>
@@ -948,7 +943,7 @@
                 <div class="wb-item">
                     <div class="wb-q">1. Nǐ nǎ nián chūshēng? <span class="translation">(Which year were you born?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">2004 nián (èr líng líng sì nián)</u> <span class="translation">(born in 2004)</span></div>
                     </div>
                 </div>
@@ -956,7 +951,7 @@
                 <div class="wb-item">
                     <div class="wb-q">2. Nǐ shǔ shénme? <span class="translation">(What is your zodiac animal?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">shǔ hóu</u> <span class="translation">(zodiac Monkey)</span></div>
                     </div>
                 </div>
@@ -964,7 +959,7 @@
                 <div class="wb-item">
                     <div class="wb-q">3. Nǐ jīnnián duō dà? <span class="translation">(How old are you this year?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">22 suì (èrshí'èr suì)</u> <span class="translation">(22 years old)</span></div>
                     </div>
                 </div>
@@ -972,7 +967,7 @@
                 <div class="wb-item">
                     <div class="wb-q">4. Nǐ shì nǎr rén? <span class="translation">(Where are you from?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Shābā rén / Selangor rén</u> <span class="translation">(from Sabah / Selangor)</span></div>
                     </div>
                 </div>
@@ -985,7 +980,7 @@
                         </div>
                     </div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')" style="margin-top:10px;">
-                        <div class="ans-hint">👁️ Click to Reveal Model Paragraph Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Model Paragraph Answer</div>
                         <div class="ans-content">
                             Wǒ de míngzi shì <u class="ud-ans">Àishā</u>. Wǒ <u class="ud-ans">èr líng líng sì</u> nián chūshēng, shǔ <u class="ud-ans">hóu</u>. Wǒ jīnnián <u class="ud-ans">èrshí'èr</u> suì. Wǒ shì <u class="ud-ans">Shābā rén (Selangor rén)</u>.
                             <br><br>
@@ -1002,9 +997,9 @@
                     <span class="page-badge">Workbook Pg 5</span>
                 </div>
 
-                <div class="rule-box" style="margin-bottom:1.2rem; background:#F8FAFC;">
+                <div class="rule-box" style="margin-bottom:1.2rem; background:#FFF5F7;">
                     <strong style="color:var(--primary-color);">Word Bank (Choose from below):</strong><br>
-                    <span class="vocab-pinyin" style="font-size:1.05rem; color:var(--accent-color);">
+                    <span class="vocab-pinyin" style="font-size:1.05rem; color:var(--accent-color); width: auto;">
                         chī | jùhuì | dàngāo | suì | kuàilè | piàoliang | shǔ | píng | xīngqī | chūshēng
                     </span>
                 </div>
@@ -1015,10 +1010,10 @@
                         Wáng Bō cānjiā jùhuì qián (before) qù dàngāo diàn (shop) mǎi le yí ge pútao 7. ______. Tā zhīdào Lín Yún hěn xǐhuan 8. ______ pútao. Tā hái mǎi le sān 9. ______ kělè.<br><br>
                         Wáng Bō zhù Lín Yún: "Shēngri 10. ______!". Jīntiān Lín Yún zhēn gāoxìng.
                     </div>
-                    <div class="wb-hint" style="margin-top:12px;">💡 Click the box below to reveal the completed passage with answers & English translation.</div>
+                    <div class="wb-hint" style="margin-top:12px;">📌 Click the box below to reveal the completed passage with answers & English translation.</div>
 
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')" style="margin-top:10px;">
-                        <div class="ans-hint">👁️ Click to Reveal Completed Passage & Answers</div>
+                        <div class="ans-hint">🔍 Click to Reveal Completed Passage & Answers</div>
                         <div class="ans-content">
                             Jīntiān shì sìyuè shísān hào, 1. <u class="ud-ans">xīngqī</u>rì. Wáng Bō yào qù cānjiā Lín Yún de shēngri 2. <u class="ud-ans">jùhuì</u>. Lín Yún shì Wáng Bō de nǚ péngyou, tā hěn 3. <u class="ud-ans">piàoliang</u>. Tā èr líng líng èr nián 4. <u class="ud-ans">chūshēng</u>, jīnnián èrshísān 5. <u class="ud-ans">suì</u>, 6. <u class="ud-ans">shǔ</u> gǒu.<br><br>
                             Wáng Bō cānjiā jùhuì qián (before) qù dàngāo diàn (shop) mǎi le yí ge pútao 7. <u class="ud-ans">dàngāo</u>. Tā zhīdào Lín Yún hěn xǐhuan 8. <u class="ud-ans">chī</u> pútao. Tā hái mǎi le sān 9. <u class="ud-ans">píng</u> kělè.<br><br>
@@ -1041,7 +1036,7 @@
                 <div class="wb-item">
                     <div class="wb-q">1. míngzi <span class="translation">(Full Name as per Matric Card)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Aishah binti Ali</u></div>
                     </div>
                 </div>
@@ -1049,7 +1044,7 @@
                 <div class="wb-item">
                     <div class="wb-q">2. Zhōngwén míngzi <span class="translation">(Chinese Name)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Àishā</u></div>
                     </div>
                 </div>
@@ -1057,7 +1052,7 @@
                 <div class="wb-item">
                     <div class="wb-q">3. Nǐ nǎ nián chūshēng? <span class="translation">(Which year were you born?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">2004 nián (èr líng líng sì nián)</u></div>
                     </div>
                 </div>
@@ -1065,7 +1060,7 @@
                 <div class="wb-item">
                     <div class="wb-q">4. Nǐ jǐ yuè jǐ hào shēngri? <span class="translation">(When is your birthday?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">2 yuè 4 hào (February 4)</u></div>
                     </div>
                 </div>
@@ -1073,7 +1068,7 @@
                 <div class="wb-item">
                     <div class="wb-q">5. Nǐ duō dà? <span class="translation">(How old are you?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">22 suì (èrshí'èr suì)</u></div>
                     </div>
                 </div>
@@ -1081,7 +1076,7 @@
                 <div class="wb-item">
                     <div class="wb-q">6. Nǐ shì nǎr rén? <span class="translation">(Where are you from?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Selangor rén</u></div>
                     </div>
                 </div>
@@ -1089,7 +1084,7 @@
                 <div class="wb-item">
                     <div class="wb-q">7. dàxué <span class="translation">(University)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Mǎláixīyà Shābā Dàxué</u> <span class="translation">(Universiti Malaysia Sabah)</span></div>
                     </div>
                 </div>
@@ -1097,7 +1092,7 @@
                 <div class="wb-item">
                     <div class="wb-q">8. xuéyuàn <span class="translation">(Faculty/School)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Shāng Xuéyuàn</u> <span class="translation">(Faculty of Business)</span></div>
                     </div>
                 </div>
@@ -1105,7 +1100,7 @@
                 <div class="wb-item">
                     <div class="wb-q">9. xuéhào <span class="translation">(Matric Number)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">BB24011111</u></div>
                     </div>
                 </div>
@@ -1113,7 +1108,7 @@
                 <div class="wb-item">
                     <div class="wb-q">10. zhuānyè <span class="translation">(Major)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">jīngjì</u> <span class="translation">(Economics)</span></div>
                     </div>
                 </div>
@@ -1121,14 +1116,14 @@
                 <div class="wb-item">
                     <div class="wb-q">11. Nǐ de Hànyǔ lǎoshī shì shéi? <span class="translation">(Who is your Chinese teacher?)</span></div>
                     <div class="wb-ans-box" onclick="this.classList.toggle('revealed')">
-                        <div class="ans-hint">👁️ Click to Reveal Sample Answer</div>
+                        <div class="ans-hint">🔍 Click to Reveal Sample Answer</div>
                         <div class="ans-content"><u class="ud-ans">Remi lǎoshī</u></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 6: 100% COMPLETE TEXTBOOK EXERCISES (PG 137-141) -->
+        <!-- TAB 6: TEXTBOOK EXERCISES (PG 137-141) -->
         <section id="tab-exercises" class="tab-content">
             <div class="content-header">
                 <h2>Textbook Exercises & Solutions (Pages 137–141)</h2>
@@ -1184,19 +1179,19 @@
                 <div class="dlg-turn">A: <u class="ud-slot">Liùyuè sì hào</u> shì bu shì xīngqīliù? <span class="translation">(Is June 4th Saturday?)</span></div>
                 <div class="dlg-turn">B: <u class="ud-slot">Liùyuè sì hào</u> bú shì xīngqīliù, shì <u class="ud-slot">xīngqīwǔ</u>. <span class="translation">(June 4th is Friday.)</span></div>
                 <div class="dlg-turn">A: <u class="ud-slot">Xīngqīwǔ</u> nǐ yǒu méiyǒu kè? <span class="translation">(Do you have class on Friday?)</span></div>
-                <div class="dlg-turn">B: Wǒ shàngwǔ yǒu kè, xiàwǔ méi yǒu kè. <span class="translation">(I have class in the morning, no class in the afternoon.)</span></div>
+                <div class="dlg-turn">B: Wǒ shàngwǔ yǒu kè, xiàwǔ méiyǒu kè. <span class="translation">(I have class in the morning, no class in the afternoon.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 1 (Prompt: 6/10 Thu):</div>
                 <div class="dlg-turn-ans">A: <u class="ud-ans">Liùyuè shí hào</u> shì bu shì xīngqīliù? <span class="translation">(Is June 10th Saturday?)</span></div>
                 <div class="dlg-turn-ans">B: <u class="ud-ans">Liùyuè shí hào</u> bú shì xīngqīliù, shì <u class="ud-ans">xīngqīsì</u>. <span class="translation">(June 10th is Thursday.)</span></div>
                 <div class="dlg-turn-ans">A: <u class="ud-ans">Xīngqīsì</u> nǐ yǒu méiyǒu kè? <span class="translation">(Do you have class on Thursday?)</span></div>
-                <div class="dlg-turn-ans">B: Wǒ shàngwǔ yǒu kè, xiàwǔ méi yǒu kè. <span class="translation">(I have morning class, no afternoon class.)</span></div>
+                <div class="dlg-turn-ans">B: Wǒ shàngwǔ yǒu kè, xiàwǔ méiyǒu kè. <span class="translation">(I have morning class, no afternoon class.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 2 (Prompt: 8/15 Sun):</div>
                 <div class="dlg-turn-ans">A: <u class="ud-ans">Bāyuè shíwǔ hào</u> shì bu shì xīngqīliù? <span class="translation">(Is August 15th Saturday?)</span></div>
                 <div class="dlg-turn-ans">B: <u class="ud-ans">Bāyuè shíwǔ hào</u> bú shì xīngqīliù, shì <u class="ud-ans">xīngqīrì</u>. <span class="translation">(August 15th is Sunday.)</span></div>
                 <div class="dlg-turn-ans">A: <u class="ud-ans">Xīngqīrì</u> nǐ yǒu méiyǒu kè? <span class="translation">(Do you have class on Sunday?)</span></div>
-                <div class="dlg-turn-ans">B: Wǒ shàngwǔ, xiàwǔ dōu méi yǒu kè. <span class="translation">(I have no class morning or afternoon.)</span></div>
+                <div class="dlg-turn-ans">B: Wǒ shàngwǔ, xiàwǔ dōu méiyǒu kè. <span class="translation">(I have no class morning or afternoon.)</span></div>
 
                 <!-- DRILL 3 -->
                 <div class="dlg-prompt-title" style="margin-top:2rem;">Drill (3) Model: Date & Planned Activity (Pg 138)</div>
@@ -1252,7 +1247,7 @@
                 <div class="dlg-turn-ans">B: Wǒ jīnnián <u class="ud-ans">shíbā suì</u>. <span class="translation">(I am 18.)</span></div>
 
                 <!-- DRILL 6 -->
-                <div class="dlg-prompt-title" style="margin-top:2rem;">Drill (6) Model: Age & Birthday Date (Pg 139)</div>
+                <div class="dlg-prompt-title" style="margin-top:2rem;">Drill (6) Model: Age & Birthday Date (Pg 138)</div>
                 <div class="dlg-turn">A: Nǐ jīnnián duō dà? <span class="translation">(How old are you?)</span></div>
                 <div class="dlg-turn">B: Wǒ jīnnián <u class="ud-slot">èrshíyī suì</u>. <span class="translation">(I am 21.)</span></div>
                 <div class="dlg-turn">A: Nǐ de shēngri shì nǎ tiān? <span class="translation">(When is your birthday?)</span></div>
@@ -1278,28 +1273,28 @@
                 <div class="dlg-turn">B: <u class="ud-slot">Běijīng</u> hěn piàoliang. <span class="translation">(Beijing is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 1 (Shànghǎi):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Shànghǎi</u> rén. <span class="translation">(I am from Shanghai.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Shànghǎi</u> zěnmeyàng? -> B: <u class="ud-ans">Shànghǎi</u> hěn piàoliang. <span class="translation">(Shanghai is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Shànghǎi</u> rén. <span class="translation">(I am from Shanghai.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Shànghǎi</u> zěnmeyàng? ➔ B: <u class="ud-ans">Shànghǎi</u> hěn piàoliang. <span class="translation">(Shanghai is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 2 (Shābā / Sabah):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Shābā</u> rén. <span class="translation">(I am from Sabah.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Shābā</u> zěnmeyàng? -> B: <u class="ud-ans">Shābā</u> hěn piàoliang. <span class="translation">(Sabah is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Shābā</u> rén. <span class="translation">(I am from Sabah.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Shābā</u> zěnmeyàng? ➔ B: <u class="ud-ans">Shābā</u> hěn piàoliang. <span class="translation">(Sabah is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 3 (Mòsīkē / Moscow):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Mòsīkē</u> rén. <span class="translation">(I am from Moscow.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Mòsīkē</u> zěnmeyàng? -> B: <u class="ud-ans">Mòsīkē</u> hěn piàoliang. <span class="translation">(Moscow is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Mòsīkē</u> rén. <span class="translation">(I am from Moscow.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Mòsīkē</u> zěnmeyàng? ➔ B: <u class="ud-ans">Mòsīkē</u> hěn piàoliang. <span class="translation">(Moscow is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 4 (Duōlúnduō / Toronto):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Duōlúnduō</u> rén. <span class="translation">(I am from Toronto.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Duōlúnduō</u> zěnmeyàng? -> B: <u class="ud-ans">Duōlúnduō</u> hěn piàoliang. <span class="translation">(Toronto is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Duōlúnduō</u> rén. <span class="translation">(I am from Toronto.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Duōlúnduō</u> zěnmeyàng? ➔ B: <u class="ud-ans">Duōlúnduō</u> hěn piàoliang. <span class="translation">(Toronto is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 5 (Niǔyuē / New York):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Niǔyuē</u> rén. <span class="translation">(I am from New York.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Niǔyuē</u> zěnmeyàng? -> B: <u class="ud-ans">Niǔyuē</u> hěn piàoliang. <span class="translation">(New York is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Niǔyuē</u> rén. <span class="translation">(I am from New York.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Niǔyuē</u> zěnmeyàng? ➔ B: <u class="ud-ans">Niǔyuē</u> hěn piàoliang. <span class="translation">(New York is beautiful.)</span></div>
 
                 <div class="dlg-prompt-title">Practice 6 (Lúndūn / London):</div>
-                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? -> B: Wǒ shì <u class="ud-ans">Lúndūn</u> rén. <span class="translation">(I am from London.)</span></div>
-                <div class="dlg-turn-ans">A: <u class="ud-ans">Lúndūn</u> zěnmeyàng? -> B: <u class="ud-ans">Lúndūn</u> hěn piàoliang. <span class="translation">(London is beautiful.)</span></div>
+                <div class="dlg-turn-ans">A: Nǐ shì nǎr rén? ➔ B: Wǒ shì <u class="ud-ans">Lúndūn</u> rén. <span class="translation">(I am from London.)</span></div>
+                <div class="dlg-turn-ans">A: <u class="ud-ans">Lúndūn</u> zěnmeyàng? ➔ B: <u class="ud-ans">Lúndūn</u> hěn piàoliang. <span class="translation">(London is beautiful.)</span></div>
 
                 <!-- DRILL 8 -->
                 <div class="dlg-prompt-title" style="margin-top:2rem;">Drill (8) Model: Party Shopping Proposal (Pg 139)</div>
@@ -1317,7 +1312,7 @@
                 <div class="dlg-turn-ans">B: Hǎo a, wǒ mǎi <u class="ud-ans">bā ge règǒu</u>. <span class="translation">(Okay, I buy 8 hot dogs.)</span></div>
             </div>
 
-            <!-- EXERCISE 3 (ALL 11 QUESTIONS ACCURATELY MATCHED) -->
+            <!-- EXERCISE 3 -->
             <div class="card">
                 <div class="card-title">
                     <span>3. Answer the Questions</span>
@@ -1341,11 +1336,11 @@
                 <div class="dlg-turn" style="margin-top:0.6rem;">6. Q: Míngtiān jǐ yuè jǐ hào? Xīngqī jǐ? <span class="translation">(What date and weekday is tomorrow?)</span></div>
                 <div class="dlg-turn-ans">Ans: Míngtiān [Month] yuè [Day] hào, xīngqī [Weekday]. <span class="translation">(Tomorrow is [Month] [Day], [Weekday].)</span></div>
 
-                <div class="dlg-turn" style="margin-top:0.6rem;">7. Q: Xīngqī yǒu jǐ tiān? <span class="translation">(How many days in a week?)</span></div>
-                <div class="dlg-turn-ans">Ans: Xīngqī yǒu qī tiān. <span class="translation">(There are 7 days in a week.)</span></div>
+                <div class="dlg-turn" style="margin-top:0.6rem;">7. Q: Xīngqītiān shì jǐ hào? <span class="translation">(What date is Sunday?)</span></div>
+                <div class="dlg-turn-ans">Ans: Xīngqītiān shì [Day] hào. <span class="translation">(Sunday is the [Day]th.)</span></div>
 
-                <div class="dlg-turn" style="margin-top:0.6rem;">8. Q: Xīngqīrì nǐ zuò shénme? <span class="translation">(What do you do on Sunday?)</span></div>
-                <div class="dlg-turn-ans">Ans: Xīngqīrì wǒ cānjiā jùhuì / qù péngyou jiā. <span class="translation">(I attend a party / go to a friend's house on Sunday.)</span></div>
+                <div class="dlg-turn" style="margin-top:0.6rem;">8. Q: Xīngqītiān nǐ zuò shénme? <span class="translation">(What do you do on Sunday?)</span></div>
+                <div class="dlg-turn-ans">Ans: Xīngqītiān wǒ cānjiā jùhuì / qù péngyou jiā. <span class="translation">(I attend a party / go to a friend's house on Sunday.)</span></div>
 
                 <div class="dlg-turn" style="margin-top:0.6rem;">9. Q: Nǐ xǐhuan chī shénme? Xǐhuan chī Zhōngcān ma? Xǐhuan chī Xīcān ma? <span class="translation">(What do you like to eat? Do you like Chinese food? Do you like Western food?)</span></div>
                 <div class="dlg-turn-ans">Ans: Wǒ xǐhuan chī kǎoyā. Wǒ xǐhuan chī Zhōngcān, yě xǐhuan chī Xīcān. <span class="translation">(I like eating roast duck. I like Chinese food, and also like Western food.)</span></div>
@@ -1357,7 +1352,7 @@
                 <div class="dlg-turn-ans">Ans: Wǒ xǐhuan chī mǐfàn. <span class="translation">(I like eating rice.)</span></div>
             </div>
 
-            <!-- EXERCISE 4 (ALL TOPICS & SCENES ACCURATELY MATCHED TO TEXTBOOK SCRIPTS) -->
+            <!-- EXERCISE 4 -->
             <div class="card">
                 <div class="card-title">
                     <span>4. Conversation Practice / Role Play</span>
@@ -1410,17 +1405,23 @@
                 <div class="dlg-turn-ans">B: Xièxie. Nǐmen lái, wǒ hěn gāoxìng. <span class="translation">(Thank you. You coming makes me very happy.)</span></div>
             </div>
 
-            <!-- EXERCISE 5 -->
+            <!-- EXERCISE 5 WITH DUAL TRANSLATIONS -->
             <div class="card">
                 <div class="card-title">
                     <span>5. Reading Comprehension & Paraphrasing</span>
                     <span class="page-badge">Pg 140-141</span>
                 </div>
                 
-                <div class="rule-box" style="margin-bottom:1.5rem; background:#F8FAFC;">
+                <div class="pinyin-box" style="margin-bottom:1.5rem; background:#FFF5F7;">
                     <strong style="color:var(--primary-color);">Short Reading Passage Text:</strong><br>
-                    Sòng Huá shì jīngjì xì de xuésheng, Běijīng rén, yī jiǔ bā èr nián chūshēng. Jīnnián shíyuè èrshíqī rì shì tā èrshí suì de shēngri. Xīngqītiān xiàwǔ, tā de hǎo péngyou men yǒu yí ge jùhuì, Wáng Xiǎoyún, Lín Nà, Dīng Lìbō hé Mǎ Dàwéi dōu lái zhùhè tā de shēngri. Tāmen zài Běijīng kǎoyā diàn chī kǎoyā hé shòumiàn, hē hóng pútaojiǔ. Péngyou men zhù Sòng Huá shēngri kuàilè, Sòng Huá hěn gāoxìng.<br><br>
-                    Lín Nà de shēngri shì shíyīyuè shí'èr hào. Sòng Huá shuō nà tiān tāmen zài lái chī shòumiàn hé kǎoyā.
+                    <div>Sòng Huá shì jīngjì xì de xuésheng, Běijīng rén, yī jiǔ bā èr nián chūshēng. <span class="translation">(Song Hua is a student in the economics department, from Beijing, born in 1982.)</span></div>
+                    <div>Jīnnián shíyuè èrshíqī rì shì tā èrshí suì de shēngri. <span class="translation">(This year, October 27th is his 20th birthday.)</span></div>
+                    <div>Xīngqītiān xiàwǔ, tā de hǎo péngyou men yǒu yí ge jùhuì, Wáng Xiǎoyún, Lín Nà, Dīng Lìbō hé Mǎ Dàwéi dōu lái zhùhè tā de shēngri. <span class="translation">(On Sunday afternoon, his good friends have a gathering; Wang Xiaoyun, Lin Na, Ding Libo, and Ma Dawei all come to congratulate his birthday.)</span></div>
+                    <div>Tāmen zài Běijīng kǎoyā diàn chī kǎoyā hé shòumiàn, hē hóng pútaojiǔ. <span class="translation">(They eat roast duck and longevity noodles and drink red wine at the Beijing Roast Duck Restaurant.)</span></div>
+                    <div>Péngyou men zhù Sòng Huá shēngri kuàilè, Sòng Huá fēicháng gāoxìng. <span class="translation">(Friends wish Song Hua a happy birthday, and Song Hua is very happy.)</span></div>
+                    <br>
+                    <div>Lín Nà de shēngri shì shíyīyuè shí'èr hào. <span class="translation">(Lin Na's birthday is November 12th.)</span></div>
+                    <div>Sòng Huá shuō nà tiān tāmen zài lái chī shòumiàn hé kǎoyā. <span class="translation">(Song Hua says that day they will come again to eat longevity noodles and roast duck.)</span></div>
                 </div>
 
                 <div class="dlg-turn">1. Q: Sòng Huá shì nǎr rén? <span class="translation">(Where is Song Hua from?)</span></div>
@@ -1456,7 +1457,7 @@
                         <li>Nǐ shǔ shénme? <span class="translation">(What is your zodiac animal?)</span></li>
                         <li>Nǐ shì nǎr rén? <span class="translation">(Where are you from?)</span></li>
                     </ul>
-                    <a href="https://padlet.com/zixianyzx/what-year-were-you-born-how-old-are-you-this-year-what-is-yo-h72l9dc9uenf885j" target="_blank" class="padlet-btn">📹 Go to Padlet Task 1</a>
+                    <a href="https://padlet.com/zixianyzx/what-year-were-you-born-how-old-are-you-this-year-what-is-yo-h72l9dc9uenf885j" target="_blank" class="padlet-btn">🔗 Go to Padlet Task 1</a>
                 </div>
 
                 <div style="background: white; padding: 1.2rem; border-radius: 8px; border: 1px solid #FBCFE8;">
@@ -1466,7 +1467,7 @@
                         <li>Nǐ guò shēngri de shíhou chī dàngāo ma? <span class="translation">(Do you eat cake when celebrating your birthday?)</span></li>
                         <li>Nǐ xǐhuan chī shénme dàngāo? <span class="translation">(What cake do you like?)</span></li>
                     </ul>
-                    <a href="https://padlet.com/zixianyzx1/when-is-your-birthday-what-cake-do-you-like-on-your-birthday-fzmw1rttbnz9s5d8" target="_blank" class="padlet-btn">📹 Go to Padlet Task 2</a>
+                    <a href="https://padlet.com/zixianyzx1/when-is-your-birthday-what-cake-do-you-like-on-your-birthday-fzmw1rttbnz9s5d8" target="_blank" class="padlet-btn">🔗 Go to Padlet Task 2</a>
                 </div>
             </div>
 
@@ -1477,7 +1478,7 @@
                 
                 <div class="checklist-item">
                     <input type="checkbox" id="c1">
-                    <label for="c1"><strong>1. Big-to-Small Dates Order:</strong> Can you state complete dates in strict chronological sequence without using English word order? <span class="translation">(Year -> Month -> Day -> Weekday -> Time of Day)</span></label>
+                    <label for="c1"><strong>1. Big-to-Small Dates Order:</strong> Can you state complete dates in strict chronological sequence without using English word order? <span class="translation">(Year ➔ Month ➔ Day ➔ Weekday ➔ Time of Day)</span></label>
                 </div>
                 
                 <div class="checklist-item">
