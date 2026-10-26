@@ -59,12 +59,13 @@
         }
 
         .sidebar-header {
-            padding: 2rem 1.5rem;
+            padding: 1.8rem 1.5rem;
             border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .sidebar-header h1 { font-size: 1.35rem; margin-bottom: 6px; color: #FFFFFF; font-family: var(--pinyin-font); }
-        .sidebar-header p { font-size: 0.88rem; color: #FFEDD5; font-weight: bold; }
+        .sidebar-header h1 { font-size: 1.45rem; margin-bottom: 4px; color: #FFFFFF; font-family: var(--pinyin-font); font-weight: 800; }
+        .sidebar-header .sub-title { font-size: 1.1rem; color: #FFFFFF; font-family: var(--pinyin-font); font-weight: 700; margin-bottom: 4px; }
+        .sidebar-header .doc-type { font-size: 0.9rem; color: #FFEDD5; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
         .sidebar-menu { list-style: none; padding: 1rem 0; overflow-y: auto; flex-grow: 1; }
 
@@ -159,7 +160,7 @@
         .stacked-item .line-hz { font-size: 0.98rem; color: #334155; line-height: 1.35; margin-top: 1px; }
         .stacked-item .line-eng { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.95rem; color: var(--text-sub); line-height: 1.35; margin-top: 2px; }
 
-        /* CLICK-TO-REVEAL INLINE EXERCISE BLANK (LESSON 1 STYLE) */
+        /* CLICK-TO-REVEAL INLINE EXERCISE BLANK */
         .exercise-blank {
             display: inline-block;
             min-width: 130px;
@@ -558,8 +559,9 @@
     <!-- LEFT SIDEBAR MENU -->
     <nav class="sidebar">
         <div class="sidebar-header">
-            <h1>Lesson 9 Revision Notes</h1>
-            <p>Tā jīnnián èrshí suì</p>
+            <h1>Lesson 9</h1>
+            <div class="sub-title">Tā jīnnián èrshí suì</div>
+            <div class="doc-type">Revision Notes</div>
         </div>
         <ul class="sidebar-menu">
             <li><button type="button" class="tab-btn active" onclick="openTab('tab-cheat', this)">📌 Key Sentences &amp; Overview</button></li>
@@ -656,7 +658,7 @@
         <!-- TAB 2: VOCABULARY QUIZ FLASHCARDS & SUPPLEMENTARY WORDS -->
         <section id="tab-vocab" class="tab-content">
             <div class="content-header">
-                <h2>Vocab Quiz Flashcards (Click Tile to Reveal Pinyin)</h2>
+                <h2>Vocab Quiz Flashcards &amp; Supplementary Words</h2>
             </div>
 
             <div class="card">
@@ -1710,7 +1712,7 @@
                 <h2>Textbook Exercises (Textbook Pg 137–141)</h2>
             </div>
 
-            <!-- EXERCISE 1: STRICT TEXTBOOK ROW ALIGNMENT (PRE & POST CLICK) -->
+            <!-- EXERCISE 1: STRICT TEXTBOOK ROW ALIGNMENT -->
             <div class="card">
                 <div class="card-title">
                     <span>1. 熟读下列词组 Read the following phrases until you learn them by heart</span>
@@ -2173,7 +2175,7 @@
                         </div>
                         <div class="stacked-item">
                             <div class="line-py">B: <span class="slot-blue">Xīngqīyī</span> shì shí'èryuè èrshí hào.</div>
-                            <div class="line-hz">B: 星期一<b>是十二月二十号</b>。</div>
+                            <div class="line-hz">B: 星期一是十二月二十号。</div>
                             <div class="line-eng">Monday is the 20th of December.</div>
                         </div>
                         <div class="stacked-item">
